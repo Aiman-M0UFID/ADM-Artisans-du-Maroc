@@ -1,66 +1,203 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/image/logo.png" width="120" alt="ADM Logo">
 </p>
 
-## About Laravel
+<h1 align="center">ADM — Artisans du Maroc 🇲🇦</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  A web platform connecting clients with Moroccan craftsmen — built with Laravel 10
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-10.x-red?logo=laravel" />
+  <img src="https://img.shields.io/badge/PHP-8.1+-blue?logo=php" />
+  <img src="https://img.shields.io/badge/TailwindCSS-3.x-38bdf8?logo=tailwindcss" />
+  <img src="https://img.shields.io/badge/MySQL-8.x-orange?logo=mysql" />
+  <img src="https://img.shields.io/badge/Security-Audited-green?logo=shield" />
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📌 About
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**ADM (Artisans du Maroc)** is a web application that allows clients to easily find qualified craftsmen in their city, browse their services, and communicate with them directly through an integrated real-time messaging system.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+> Academic project — Bachelor's Degree in Computer Science
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## ✨ Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- 🔍 **Search craftsmen** by city and service category
+- 💬 **Real-time chat** between clients and craftsmen (Chatify)
+- 👤 **Client space** — search, browse profiles, messaging
+- 🧰 **Craftsman space** — manage profile and listed services
+- 🗂️ **Admin space** — manage service categories
+- 🖼️ **Craftsman profile** with photo, title, years of experience and details
+- 🔐 **Role-based access control** — secured spaces per user role
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## 🔐 Security
 
-## Contributing
+This project has been audited and hardened from a cybersecurity perspective. See the full report in [`/security`](./security/).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Vulnerabilities fixed
 
-## Code of Conduct
+| # | Vulnerability | Severity | Status |
+|---|---|---|---|
+| 1 | No role check on `/admin` route | 🔴 Critical | ✅ Fixed |
+| 2 | No role check on `/artisan` route | 🔴 Critical | ✅ Fixed |
+| 3 | Unrestricted file upload (ServiceController) | 🔴 Critical | ✅ Fixed |
+| 4 | Unrestricted file upload (CategorieController) | 🔴 Critical | ✅ Fixed |
+| 5 | IDOR — artisan could edit other artisans' services | 🔴 Critical | ✅ Fixed |
+| 6 | Privilege escalation via registration (`type_user=admin`) | 🟠 High | ✅ Fixed |
+| 7 | Dead code — incorrect redirect logic | 🟡 Medium | ✅ Fixed |
+| 8 | Predictable uploaded filenames (`time()`) | 🟡 Medium | ✅ Fixed |
+| 9 | No logging of sensitive actions | 🟡 Medium | ✅ Fixed |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### What was already secure
+- ✅ CSRF protection (Laravel default)
+- ✅ Password hashing with bcrypt
+- ✅ Input validation on forms
+- ✅ Session regeneration after login
+- ✅ `.env` excluded from Git
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🗃️ Database Schema
 
-## License
+### `users`
+| Column | Type | Description |
+|---|---|---|
+| `id` | INT | Primary key |
+| `name` | VARCHAR | Full name |
+| `email` | VARCHAR | Email (unique) |
+| `type_user` | VARCHAR | Role: `client`, `artisan`, `admin` |
+| `ville` | VARCHAR | City |
+| `telephone` | VARCHAR | Phone number |
+| `password` | VARCHAR | Hashed password (bcrypt) |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### `services`
+| Column | Type | Description |
+|---|---|---|
+| `id` | INT | Primary key |
+| `nom` | VARCHAR | Service name |
+| `title` | VARCHAR | Display title |
+| `experience` | INT | Years of experience |
+| `image` | VARCHAR | Service photo (UUID filename) |
+| `details` | TEXT | Full description |
+| `user_id` | INT | Reference to artisan |
+| `categorie_id` | INT | Reference to category |
+
+### `categories`
+| Column | Type | Description |
+|---|---|---|
+| `id` | INT | Primary key |
+| `title` | VARCHAR | Category name |
+| `sub_title` | VARCHAR | Subtitle |
+| `image` | VARCHAR | Representative image |
+
+---
+
+## 🏗️ Tech Stack
+
+| Technology | Role |
+|---|---|
+| **Laravel 10** | PHP backend framework |
+| **Laravel Breeze** | Authentication (register / login) |
+| **Laravel Sanctum** | API session security |
+| **Chatify** | Real-time messaging |
+| **Tailwind CSS** | Responsive UI |
+| **Alpine.js** | Frontend interactivity |
+| **Vite** | Asset bundler |
+| **MySQL** | Relational database |
+
+---
+
+## 🚀 Local Installation
+
+### Requirements
+- PHP >= 8.1
+- Composer
+- Node.js & npm
+- MySQL (XAMPP or Laragon recommended)
+
+### Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Aiman-M0UFID/ADM-Artisans-du-Maroc.git
+cd ADM-Artisans-du-Maroc
+
+# 2. Install PHP dependencies
+composer install
+
+# 3. Install Node dependencies
+npm install
+
+# 4. Copy environment file
+cp .env.example .env
+
+# 5. Generate application key
+php artisan key:generate
+
+# 6. Configure database in .env
+# DB_DATABASE=adm
+# DB_USERNAME=root
+# DB_PASSWORD=
+
+# 7. Run migrations
+php artisan migrate
+
+# 8. Compile assets
+npm run build
+
+# 9. Start the server
+php artisan serve
+```
+
+Visit [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 📁 Project Structure
+
+```
+ADM/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Auth/               # Authentication
+│   │   │   └── Front/
+│   │   │       ├── Admin/          # Category management
+│   │   │       ├── Artisan/        # Service management
+│   │   │       └── HomeController  # Home & search
+│   │   └── Middleware/
+│   │       ├── AdminMiddleware.php     # 🔐 Role check: admin
+│   │       └── ArtisanMiddleware.php   # 🔐 Role check: artisan
+│   └── Models/
+│       ├── User.php
+│       └── Front/
+│           ├── Admin/Categorie.php
+│           └── Artisan/Service.php
+├── database/migrations/
+├── resources/views/Front/
+├── routes/web.php
+└── security/                       # 🔐 Security audit & report
+    ├── SECURITY_REPORT.md
+    └── PENTEST.md
+```
+
+---
+
+## 👨‍💻 Author
+
+**Aiman MOUFID**
+Bachelor's Degree in Computer Science
+
+---
+
+## 📄 License
+
+This project is developed for academic purposes only.
